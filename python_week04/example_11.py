@@ -27,6 +27,7 @@ def draw_sky(canvas, scene_width, scene_height):
     draw_rectangle(canvas, 0, scene_height / 3,
                    scene_width, scene_height, width=0, fill="midnightblue")
 
+    # start
     half_height = round(scene_height / 1)
     min_diam = 5
     max_diam = 8
