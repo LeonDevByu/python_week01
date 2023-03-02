@@ -1,5 +1,3 @@
-# Copyright 2020, Brigham Young University-Idaho. All rights reserved.
-
 def main():
     # Create a dictionary that contains data about six vehicles.
     # The key for each vehicle in the dictionary is the vehicle's
@@ -23,18 +21,15 @@ def main():
     # Ask the user for a vehicle identification number (VIN).
     vin = input("Please enter a VIN: ")
 
-    # Check if the VIN is a key that is in the vehicles dictionary.
-    if vin in vehicles_dict:
+    # Check if the vin is a key that is in the vehicles dictionary.
+    if pass:
 
         # Find the data for the vehicle that the user wants.
-        value_list = vehicles_dict[vin]
+        pass
 
         # Print the manufacturer, model, and color of the vehicle.
         # Don't print the year, engine design, or displacement.
-        manufacturer = value_list[MANUFACTURER_INDEX]
-        model = value_list[MODEL_INDEX]
-        color = value_list[COLOR_INDEX]
-        print(manufacturer, model, color)
+        pass
 
     else:
         # Print a message stating that the VIN entered

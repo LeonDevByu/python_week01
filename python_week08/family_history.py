@@ -1,5 +1,3 @@
-# Copyright 2020, Brigham Young University-Idaho. All rights reserved.
-
 # Each value in the people dictionary is a list. These
 # are the indexes of the elements in those lists.
 NAME_INDEX = 0
@@ -102,20 +100,7 @@ def print_death_age(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    print("Ages at Death")
-
-    # For each person in the people dictionary, do the following:
-    for person_key, person_list in people_dict.items():
-        # Get the person's name, birth year, and death year.
-        name = person_list[NAME_INDEX]
-        birth_year = person_list[BIRTH_YEAR_INDEX]
-        death_year = person_list[DEATH_YEAR_INDEX]
-
-        # Compute the person's age at death.
-        death_age = death_year - birth_year
-
-        # Print the data about the person for the user to see.
-        print(name, death_age)
+    pass
 
 
 def count_genders(people_dict):
@@ -128,18 +113,7 @@ def count_genders(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    num_males = 0
-    for person_key, person_list in people_dict.items():
-        gender = person_list[GENDER_INDEX]
-        if gender == "M":
-            num_males += 1
-
-    num_people = len(people_dict)
-    num_females = num_people - num_males
-
-    print("Genders")
-    print(f"Number of males: {num_males}")
-    print(f"Number of females: {num_females}")
+    pass
 
 
 def print_marriages(marriages_dict, people_dict):
@@ -156,40 +130,7 @@ def print_marriages(marriages_dict, people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    print("Marriages")
-
-    # For each marriage in the marriage dictionary, do the following:
-    for marriage_key, marriage_list in marriages_dict.items():
-
-        # Get the husband person key, wife person
-        # key, and year they were married.
-        husband_key = marriage_list[HUSBAND_KEY_INDEX]
-        wife_key = marriage_list[WIFE_KEY_INDEX]
-        wedding_year = marriage_list[WEDDING_YEAR_INDEX]
-
-        # Use the husband person key to get the husband's
-        # data from the people dictionary and then get the
-        # husband's name and birth year from his data.
-        husband_list = people_dict[husband_key]
-        husband_name = husband_list[NAME_INDEX]
-        husband_birth = husband_list[BIRTH_YEAR_INDEX]
-
-        # Calculate the husband's age when he married.
-        husband_age = wedding_year - husband_birth
-
-        # Use the wife person key to get the wife's data
-        # from the people dictionary and then get the
-        # wife's name and birth year from her data.
-        wife_list = people_dict[wife_key]
-        wife_name = wife_list[NAME_INDEX]
-        wife_birth = wife_list[BIRTH_YEAR_INDEX]
-
-        # Calculate the wife's age when she married.
-        wife_age = wedding_year - wife_birth
-
-        # Print the data about the marriage for the user to see.
-        print(f"{husband_name} {husband_age}" \
-            f" > {wedding_year} < {wife_name} {wife_age}")
+    pass
 
 
 # If this file was executed like this:
