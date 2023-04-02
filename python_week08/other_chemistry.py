@@ -5,53 +5,9 @@ from formula import parse_formula
 
 
 def main():
-    # Get a chemical formula for a molecule from the user.
-    formula = input("Enter the molecular formula of the sample: ")
-    # Get the mass of a chemical sample in grams from the user.
-    mass = float(input("Enter the mass in grams of the sample: "))
-    # Call the make_periodic_table function and store the periodic table in a variable.
-    periodic_table = make_periodic_table()
-
-    # Exceeding the Requirements
-    # Add a dictionary that contains known chemical formulas and their names
-    known_molecules_dict = 0
-    known_molecules = get_formula_name(formula, known_molecules_dict)
-    if formula in known_molecules:
-        name = known_molecules[formula]
-        print(name)
-    else:
-        print("unknown compound")
-    # Call the parse_formula function to convert the chemical formula given by the user to a compound
-    # list that stores element symbols and the quantity of atoms of each element in the molecule.
-    SYMBOL_INDEX = 0
-    QUANTITY_INDEX = 1
+    NAME_INDEX = 0
     ATOMIC_MASS_INDEX = 1
-    molar_mass = 0
-    atomic_mass = 0
-    number_moles = 0
-    symbol_quantity_list = parse_formula(formula, periodic_table)
-    for row_list in symbol_quantity_list:
-        X = row_list[SYMBOL_INDEX]
-        Y = row_list[QUANTITY_INDEX]
-        if X in periodic_table:
-            value = periodic_table[X]
-            atomic_mass = float(value[ATOMIC_MASS_INDEX])
 
-        # Call the compute_molar_mass function to compute the molar mass of the molecule from the compound list.
-        molar_mass += compute_molar_mass(Y, atomic_mass)
-
-        # Compute the number of moles in the sample.
-
-        number_moles = float(mass / molar_mass)
-
-    # Print the molar mass.
-    print(f" {molar_mass:.5f} grams/mole")
-    # Print the number of moles.
-    print(f" {number_moles:.5f} moles")
-    # print(f" {name}")
-
-
-def make_periodic_table():
     periodic_table_dict = {
         # symbol: [name, atomic_mass]
         "Ac": ["Actinium", 227],
@@ -150,37 +106,41 @@ def make_periodic_table():
         "Zr": ["Zirconium", 91.224]
     }
 
-    table = dict(periodic_table_dict)
-    return table
+    # Get a chemical formula for a molecule from the user.
+    formula = input("Enter the molecular formula of the sample: ")
+    # Get the mass of a chemical sample in grams from the user.
+    mass = float(input("Enter the mass in grams of the sample: "))
+    # Call the make_periodic_table function and store the periodic table in a variable.
 
+    # Call the parse_formula function to convert the chemical formula given by the user to a compound
+    # list that stores element symbols and the quantity of atoms of each element in the molecule.
+    SYMBOL_INDEX = 0
+    QUANTITY_INDEX = 1
+    molar_mass = 0
+    atomic_mass = 0
+    number_moles = 0
+    symbol_quantity_list = parse_formula(formula, periodic_table_dict)
+    for row_list in symbol_quantity_list:
+        X = row_list[SYMBOL_INDEX]
+        Y = int(row_list[QUANTITY_INDEX])
 
-def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
-    molar_mass = symbol_quantity_list * periodic_table_dict
-    return molar_mass
+        # print(symbol_quantity_list)
+        # print(f" {X}, {Y}")
+        if X in periodic_table_dict:
+            value = periodic_table_dict[X]
+            atomic_mass = float(value[ATOMIC_MASS_INDEX])
 
+        # Call the compute_molar_mass function to compute the molar mass of the molecule from the compound list.
+        molar_mass += Y * atomic_mass
 
-def get_formula_name(formula, known_molecules_dict):
-    known_molecules_dict = {
-        "Al2O3": "aluminum oxide",
-        "CH3OH": "methanol",
-        "C2H6O": "ethanol",
-        "C2H5OH": "ethanol",
-        "C3H8O": "isopropyl alcohol",
-        "C3H8": "propane",
-        "C4H10": "butane",
-        "C6H6": "benzene",
-        "C6H14": "hexane",
-        "C8H18": "octane",
-        "CH3(CH2)6CH3": "octane",
-        "C13H18O2": "ibuprofen",
-        "C13H16N2O2": "melatonin",
-        "Fe2O3": "iron oxide",
-        "FeS2": "iron pyrite",
-        "H2O": "water"
-    }
+        # Compute the number of moles in the sample.
 
-    molecules_dict = dict(known_molecules_dict)
-    return molecules_dict
+        number_moles = float(mass / molar_mass)
+
+    # Print the molar mass.
+    print(f" {molar_mass:.5f} grams/mole")
+    # Print the number of moles.
+    print(f" {number_moles:.5f} moles")
 
 
 if __name__ == "__main__":
