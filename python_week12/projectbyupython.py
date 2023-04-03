@@ -3,13 +3,14 @@ import tkinter as tk
 from tkinter import Frame, Label, Button
 from number_entry import IntEntry, FloatEntry
 import pywhatkit
+from tkinter import *
 
 
 def main():
     # Create the Tk root object.
     root = tk.Tk()
     root.geometry("500x300")
-    root.maxsize(500, 300)
+    root.maxsize(500, 600)
     root.config(bg="lightgrey")
     # Create the main window. In tkinter,
     # a window is also called a frame.
@@ -25,7 +26,7 @@ def main():
 
 
 def populate_main_window(frm_main):
-    lbl_01 = Label(frm_main, text="Please enter your information:   Attendance: 1     Missing: 2 ", bg="lightgrey")
+    lbl_01 = Label(frm_main, text="Please enter your information: ", bg="lightgrey")
     # lbl_01 = Label(frm_main, text="Attendance: 1     Missing: 2")
 
     lbl_02 = Label(frm_main, text="León  Matías Edwin Leonardo :")
@@ -39,19 +40,30 @@ def populate_main_window(frm_main):
     lbl_10 = Label(frm_main, text="Asto Laupa, Julio Cesar :")
 
     # Create three number entries.
-    ent_02 = IntEntry(frm_main, width=5, lower_bound=1, upper_bound=2)
-    ent_03 = IntEntry(frm_main, width=5, lower_bound=1, upper_bound=2)
-    ent_04 = IntEntry(frm_main, width=5, lower_bound=1, upper_bound=2)
-    ent_05 = IntEntry(frm_main, width=5, lower_bound=1, upper_bound=2)
-    ent_06 = IntEntry(frm_main, width=5, lower_bound=1, upper_bound=2)
-    ent_07 = IntEntry(frm_main, width=5, lower_bound=1, upper_bound=2)
-    ent_08 = IntEntry(frm_main, width=5, lower_bound=1, upper_bound=2)
-    ent_09 = IntEntry(frm_main, width=5, lower_bound=1, upper_bound=2)
-    ent_10 = IntEntry(frm_main, width=5, lower_bound=1, upper_bound=2)
+    red_var02 = IntVar()
+    red_var03 = IntVar()
+    red_var04 = IntVar()
+    red_var05 = IntVar()
+    red_var06 = IntVar()
+    red_var07 = IntVar()
+    red_var08 = IntVar()
+    red_var09 = IntVar()
+    red_var10 = IntVar()
+    ent_02 = Checkbutton(frm_main, width=5, variable=red_var02, bg="grey")
+    ent_03 = Checkbutton(frm_main, width=5, variable=red_var03, bg="darkgray")
+    ent_04 = Checkbutton(frm_main, width=5, variable=red_var04, bg="grey")
+    ent_05 = Checkbutton(frm_main, width=5, variable=red_var05, bg="darkgray")
+    ent_06 = Checkbutton(frm_main, width=5, variable=red_var06, bg="grey")
+    ent_07 = Checkbutton(frm_main, width=5, variable=red_var07, bg="darkgray")
+    ent_08 = Checkbutton(frm_main, width=5, variable=red_var08, bg="grey")
+    ent_09 = Checkbutton(frm_main, width=5, variable=red_var09, bg="darkgray")
+    ent_10 = Checkbutton(frm_main, width=5, variable=red_var10, bg="grey")
 
     # Create the Clear button.
     btn_clear = Button(frm_main, text="Clear")
-    btn_send = Button(frm_main, text="Submit")
+    btn_submit = Button(frm_main, text="Submit", command=populate_main_window)
+    btn_end = Button(frm_main, text="End", command=frm_main.quit)
+
     # Layout all the labels, number entries, and buttons in a grid.
     lbl_01.grid(row=0, column=0, columnspan=4, padx=5, pady=5)
 
@@ -82,39 +94,50 @@ def populate_main_window(frm_main):
     lbl_10.grid(row=9, column=0, padx=3, pady=2, sticky="e")
     ent_10.grid(row=9, column=1, padx=3, pady=2, sticky="w")
 
+    btn_submit.grid(row=11, column=0, padx=3, pady=2)
     btn_clear.grid(row=11, column=1, padx=3, pady=2)
-    btn_send.grid(row=11, column=0, padx=3, pady=2)
+    btn_end.grid(row=11, column=2, padx=3, pady=2)
 
+    red02 = red_var02.get()
+    red03 = red_var03.get()
+    red04 = red_var04.get()
+    red05 = red_var05.get()
+    red06 = red_var06.get()
+    red07 = red_var07.get()
+    red08 = red_var08.get()
+    red09 = red_var09.get()
+    red10 = red_var10.get()
+
+    print(
+        "red02: {}\nred03:{}\nred04: {}\nred05: {}\nred06: {}\nred07: {}\nred08: {}\nred09: {}\nred10: {}".format(
+            red02, red03, red04, red05, red06, red07, red08, red09, red10))
     # This function is called each time the user releases a key.
+    frm_main.mainloop()
 
-    def display_ent(event):
-
-        """Compute the approximate volume of a tire in liters."""
+    # def display_ent(event):
 
     # try:
-        # Get the user input.
-        w = ent_02.get()
-        w = ent_03.get()
-        w = ent_04.get()
-        w = ent_05.get()
-        w = ent_06.get()
-        w = ent_07.get()
-        w = ent_08.get()
-        w = ent_09.get()
-        w = ent_10.get()
+    # Get the user input.
 
-        if w == 1:
-            print("attendance")
-        else:
-            print("missing")
-        # Compute the tire volume in liters.
-        # v = (math.pi * w * w * a * (w * a + 2540 * d)) / 10_000_000_000
+    # w2 = ent_02.get()
+    # w3 = ent_03.get()
+    # w4 = ent_04.get()
+    # w5 = ent_05.get()
+    # w6 = ent_06.get()
+    # w7 = ent_07.get()
+    # w8 = ent_08.get()
+    # w9 = ent_09.get()
+    # w10 = ent_10.get()
 
-        # Display the volume rounded to one digit
-        # after the decimal for the user to see.
-        # w.config(text=f"")
-
-    # except ValueError:
+    # print(f"{w2}")
+    # print(f"{w3}")
+    # print(f"{w4}")
+    # if w4 == 1:
+    #     print("attendance")
+    # else:
+    #     print("missing")
+    # Compute the tire volume in liters.
+    # v = (math.pi * w *
 
     # When the user deletes all the digits in one
     # of the number entries, clear the result.
@@ -124,31 +147,32 @@ def populate_main_window(frm_main):
     # the user clicks the "Clear" button.
 
     def clear():
-
         """Clear all the inputs and outputs."""
+        btn_clear.focus()
+        ent_02.clear()
+        ent_03.clear()
+        ent_04.clear()
+        ent_05.clear()
+        ent_06.clear()
+        ent_07.clear()
+        ent_08.clear()
+        ent_09.clear()
+        ent_10.clear()
 
-    btn_clear.focus()
-    ent_02.clear()
-    ent_03.clear()
-    ent_04.clear()
-    ent_05.clear()
-    ent_06.clear()
-    ent_07.clear()
-    ent_08.clear()
-    ent_09.clear()
-    ent_10.clear()
+        ent_02.focus()
+
+    # ent_02.bind("<KeyRelease>", display_ent)
+    # ent_03.bind("<KeyRelease>", display_ent)
+    # ent_04.bind("<KeyRelease>", display_ent)
+    # ent_05.bind("<KeyRelease>", display_ent)
+    # ent_06.bind("<KeyRelease>", display_ent)
+    # ent_07.bind("<KeyRelease>", display_ent)
+    # ent_08.bind("<KeyRelease>", display_ent)
+    # ent_09.bind("<KeyRelease>", display_ent)
+    # ent_10.bind("<KeyRelease>", display_ent)
 
     btn_clear.config(command=clear)
-
-    ent_02.bind("<KeyRelease>", display_ent)
-    ent_03.bind("<KeyRelease>", display_ent)
-    ent_04.bind("<KeyRelease>", display_ent)
-    ent_05.bind("<KeyRelease>", display_ent)
-    ent_06.bind("<KeyRelease>", display_ent)
-    ent_07.bind("<KeyRelease>", display_ent)
-    ent_08.bind("<KeyRelease>", display_ent)
-    ent_09.bind("<KeyRelease>", display_ent)
-    ent_10.bind("<KeyRelease>", display_ent)
+    ent_02.focus()
 
 
 # Give the keyboard focus to the width text field.

@@ -70,23 +70,22 @@ def populate_main_window(frm_main):
     btn_clear = Button(frm_main, text="Clear")
 
     # Layout all the labels, number entries, and buttons in a grid.
-    lbl_width.grid(      row=0, column=0, padx=3, pady=2, sticky="e")
-    ent_width.grid(      row=0, column=1, padx=3, pady=2, sticky="w")
+    lbl_width.grid(row=0, column=0, padx=3, pady=2, sticky="e")
+    ent_width.grid(row=0, column=1, padx=3, pady=2, sticky="w")
     lbl_width_units.grid(row=0, column=2, padx=0, pady=2, sticky="w")
 
-    lbl_ratio.grid(     row=1, column=0, padx=3, pady=2, sticky="e")
-    ent_ratio.grid(     row=1, column=1, padx=3, pady=2, sticky="w")
+    lbl_ratio.grid(row=1, column=0, padx=3, pady=2, sticky="e")
+    ent_ratio.grid(row=1, column=1, padx=3, pady=2, sticky="w")
     # Ratios don't have units.
 
-    lbl_diam.grid(      row=2, column=0, padx=3, pady=2, sticky="e")
-    ent_diam.grid(      row=2, column=1, padx=3, pady=2, sticky="w")
+    lbl_diam.grid(row=2, column=0, padx=3, pady=2, sticky="e")
+    ent_diam.grid(row=2, column=1, padx=3, pady=2, sticky="w")
     lbl_diam_units.grid(row=2, column=2, padx=0, pady=2, sticky="w")
 
-    lbl_volume.grid(   row=3, column=0, padx=3, pady=2, sticky="e")
-    txt_volume.grid(   row=3, column=1, padx=3, pady=2, sticky="w")
+    lbl_volume.grid(row=3, column=0, padx=3, pady=2, sticky="e")
+    txt_volume.grid(row=3, column=1, padx=3, pady=2, sticky="w")
     lbl_vol_units.grid(row=3, column=2, padx=0, pady=2, sticky="w")
-    btn_clear.grid(    row=3, column=3, padx=3, pady=2)
-
+    btn_clear.grid(row=3, column=3, padx=3, pady=2)
 
     # This function is called each time the user releases a key.
     def calculate(event):
@@ -103,12 +102,13 @@ def populate_main_window(frm_main):
             # Display the volume rounded to one digit
             # after the decimal for the user to see.
             txt_volume.config(text=f"{v:.2f}")
-
+            print(f"{w}")
+            print(f"{a}")
+            print(f"{d}")
         except ValueError:
             # When the user deletes all the digits in one
             # of the number entries, clear the result.
             txt_volume.config(text="")
-
 
     # This function is called each time
     # the user clicks the "Clear" button.
@@ -120,7 +120,6 @@ def populate_main_window(frm_main):
         ent_diam.clear()
         txt_volume.config(text="")
         ent_width.focus()
-
 
     # Bind the calculate function to the three number
     # entries so that the calculate function will be called
@@ -144,4 +143,3 @@ def populate_main_window(frm_main):
 # imported (e.g. into a test file), then skip the call to main.
 if __name__ == "__main__":
     main()
-
